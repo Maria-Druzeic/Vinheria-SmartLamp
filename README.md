@@ -84,14 +84,7 @@ O ESP32 realiza duas funções principais:
 ## 📄 Código do Projeto
 
 O código foi desenvolvido em C++ utilizando Arduino e está disponível no repositório.
-
-## Autores:
-
-* Giovanna Oliveira Ferreira Dias – RM 566647
-* Maria Laura Druzeic – RM 566634
-* Marianne Mukai Nishikawa – RM 568001
   
-
 ## ☁️ Configuração do FIWARE
 
 * Plataforma instalada no Google Cloud
@@ -142,4 +135,9 @@ lamp002@off|
 * Envio contínuo de dados de luminosidade
 
 ---
+## Equipe:
+
+* Giovanna Oliveira Ferreira Dias – RM 566647
+* Maria Laura Druzeic – RM 566634
+* Marianne Mukai Nishikawa – RM 568001
 
