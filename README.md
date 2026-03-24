@@ -1,78 +1,145 @@
-🌐 Projeto IoT com FIWARE – Monitoramento de Luminosidade (Smart Lamp)
+# Vinheria – Projeto FIWARE + ESP32 (Smart Lamp IoT)
 
-📌 Descrição
-Este projeto tem como objetivo demonstrar a integração entre dispositivos IoT e a plataforma FIWARE, utilizando um ESP32 equipado com um sensor LDR para monitoramento de luminosidade e controle de uma lâmpada (LED onboard).
+## 📖 Descrição do Projeto
 
-A solução permite:
+Este projeto tem como objetivo implementar uma **Prova de Conceito (PoC)** utilizando a plataforma FIWARE integrada a um **ESP32 DEVKIT V1**, simulado no Wokwi.
 
-📡 Enviar dados de luminosidade (edge → cloud)
+A solução simula um sistema de **monitoramento de luminosidade para vinherias**, utilizando um sensor LDR, além de permitir o controle remoto de um LED (lâmpada) via protocolo MQTT.
 
-🎛️ Controlar o estado da lâmpada via FIWARE (cloud → edge)
+---
 
-🔄 Comunicação via protocolo MQTT
+## 🎯 Objetivos
 
-🌍 Gerenciamento de contexto com Orion Context Broker
+* Implementar o FIWARE no Google Cloud
+* Criar uma entidade lógica representando uma lâmpada inteligente
+* Simular um sistema IoT com ESP32
+* Enviar dados de luminosidade para o FIWARE
+* Receber comandos remotos para controle do LED
+* Validar comunicação via MQTT e Postman
 
-🧠 Arquitetura da Solução
+---
 
-A arquitetura está dividida em três camadas:
+## 🧠 Arquitetura da Solução
 
-🔝 Application
-Postman (envio de comandos e consultas)
-Integração via API REST (NGSI v2)
+* ESP32 (simulado no Wokwi)
+* Sensor LDR (leitura de luminosidade)
+* Broker MQTT
+* FIWARE (Orion Context Broker)
+* Postman (envio de comandos)
 
-⚙️ Back-end (FIWARE)
-Orion Context Broker
-IoT Agent MQTT
-Mosquitto MQTT Broker
-MongoDB
+Fluxo:
 
-📡 IoT / Edge
+ESP32 → MQTT → FIWARE
+FIWARE → MQTT → ESP32
 
-ESP32 (Wokwi / físico)
+---
 
-Sensor LDR (entrada analógica)
+## ⚙️ Tecnologias Utilizadas
 
-LED onboard (atuador)
+* FIWARE
+* Google Cloud Platform
+* ESP32 DEVKIT V1
+* Wokwi
+* MQTT
+* Postman
+* Linguagem C++ (Arduino)
 
-🔄 Fluxo de Dados
+---
 
-📤 Edge → Cloud
+## 🔌 Funcionamento do Sistema
 
-ESP32 lê o valor do LDR
+O ESP32 realiza duas funções principais:
 
-Publica no MQTT Broker
+### 📡 Envio de dados
 
-IoT Agent recebe e traduz
+* Lê o valor do sensor LDR (simulado por potenciômetro)
+* Converte o valor para porcentagem (0 a 100)
+* Publica no tópico MQTT:
 
-Orion atualiza a entidade
+```
+/TEF/lamp002/attrs/l
+```
 
-📥 Cloud → Edge
+### 💡 Controle da lâmpada
 
-Postman envia comando (ON/OFF)
+* Recebe comandos via MQTT:
 
-Orion recebe
+```
+/TEF/lamp002/cmd
+```
 
-IoT Agent traduz para MQTT
+* Comandos:
 
-ESP32 recebe e controla o LED
+  * `lamp002@on|` → Liga LED
+  * `lamp002@off|` → Desliga LED
 
-🧰 Tecnologias Utilizadas
+* Envia status para o broker:
 
-ESP32
+```
+/TEF/lamp002/attrs
+```
 
-Arduino (C++)
+---
 
-Wokwi Simulator
+## 📄 Código do Projeto
 
-FIWARE
+O código foi desenvolvido em C++ utilizando Arduino e está disponível no repositório.
 
-Orion Context Broker
+## Autores:
 
-IoT Agent MQTT
+* Giovanna Oliveira Ferreira Dias – RM 566647
+* Maria Laura Druzeic – RM 566634
+* Marianne Mukai Nishikawa – RM 568001
+  
 
-Mosquitto MQTT Broker
+## ☁️ Configuração do FIWARE
 
-MongoDB
-Docker / Docker Compose
-Postman
+* Plataforma instalada no Google Cloud
+* Broker MQTT configurado
+* Comunicação com Orion Context Broker validada
+* Health Check executado com sucesso
+
+---
+
+## 🧪 Simulação (Wokwi)
+
+🔗 Link da simulação:
+*https://wokwi.com/projects/459135998760928257*
+
+---
+
+## 🎥 Vídeo Demonstrativo
+
+🔗 Link do vídeo (máx. 3 minutos):
+*(coloque aqui seu vídeo em time-lapse)*
+
+O vídeo demonstra:
+
+* Envio de dados de luminosidade
+* Comunicação com FIWARE
+* Controle do LED via Postman
+
+---
+
+## 📬 Testes com Postman
+
+Utilizado para enviar comandos ao dispositivo:
+
+Exemplo de comando:
+
+```
+lamp002@on|
+lamp002@off|
+```
+
+---
+
+## ✅ Resultados Obtidos
+
+* Comunicação IoT funcionando corretamente
+* Integração ESP32 + MQTT + FIWARE validada
+* Controle remoto do dispositivo operacional
+* Envio contínuo de dados de luminosidade
+
+---
+
