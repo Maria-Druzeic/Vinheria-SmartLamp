@@ -1,4 +1,4 @@
-# Vinheria – Projeto FIWARE + ESP32 (Smart Lamp IoT)
+# Projeto FIWARE + ESP32 (Smart Lamp IoT)
 
 ## 📖 Descrição do Projeto
 
